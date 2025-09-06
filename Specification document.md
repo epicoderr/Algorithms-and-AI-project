@@ -1,4 +1,4 @@
-# Basics:
+# Basics: 
 - I am implementing an AI for the 2048 game 
 - I am studying in the computer and data sciene track of the bachelors programme in science 
 - I will use python as the programming language. 
