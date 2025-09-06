@@ -12,3 +12,4 @@ The core of the project will be the development of an AI capable of playing the 
 the expectiminimax search algorith as well as the heuristic function which will evaluate the board state using multiple factors. Thus, most of the
 development time will go into implementing, improving and testing these algoriths. The interface will be secondary and either text based or maybe I will
 create a bit of a nicer interface probably with the help of AI (which I will document) if I feel it is appropriate.
+ 
