@@ -1,0 +1,18 @@
+# Basics: 
+- I am implementing an AI for the 2048 game 
+- I am studying in the computer and data sciene track of the bachelors programme in science 
+- I will use python as the programming language. 
+- I am not familiar enough with others to confidently peer-review porjects written with them 
+
+# Project Details:
+- For algorithms I will use expectiminimax as well as the heuristic evaluation function, for data structures probably a 2D array to represent the game board and trees 
+- The program will take in the board state and random spawns as inputs and then try to evaluate the situation using expectiminimax 
+- For the expected time and space complexoty from what I understood after reading the space complexity is just O(d) where d is the depth or number of player moves and time complexity is O(b^d n^d) where b is the number of possible moves and n is the number of possible random outcomes 
+- As for sources I will at least probably use this one mentioned in the course material: https://cs229.stanford.edu/proj2016/report/NieHouAn-AIPlays2048-report.pdf If I use others I will be sure to mention them 
+
+# Core functionality:
+- The core of the project will be the development of an AI capable of playing the game 2048 efficiently. 
+- The most key aspects of the project will be using the expectiminimax search algorith as well as the heuristic function which will evaluate the board state using multiple factors. 
+- Thus, most of the development time will go into implementing, improving and testing these algoriths. 
+- The interface will be secondary and either text based or maybe I will create a bit of a nicer interface probably with the help of AI (which I will document) if I feel it is appropriate.
+ 
