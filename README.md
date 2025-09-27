@@ -1,7 +1,7 @@
 ## How to use
 - Navigate to project environment
 
-- Use *poetry shell* or **poetry env activate** to activate the virtual environment
+- Use **poetry shell** or **poetry env activate** to activate the virtual environment
 
 - Use **poetry install** to install poetry if you do not have it
 
