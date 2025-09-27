@@ -1,5 +1,4 @@
 import random
-import copy
 
 class Board:
     def __init__(self, size=4):
@@ -71,7 +70,7 @@ class Board:
         self.grid = rotated_grid
     
     def move_tiles(self, direction):
-        original_state = copy.deepcopy(self.grid)
+        changed = False
         # This is handled for the direction being right by default, and then for the other directions I just rotate to make it work
         if direction in ["RIGHT", "LEFT", "UP", "DOWN"]:
             if direction == "LEFT":
@@ -100,6 +99,9 @@ class Board:
             #We shift again in case a merge occured
                 new_row = [tile for tile in shifted_row if tile != 0]
                 final_row = [0] * (self.size - len(new_row)) + new_row
+
+                if final_row != self.grid[i]:
+                    changed = True
             
                 self.grid[i] = final_row
 
@@ -116,7 +118,7 @@ class Board:
                 self.rotate_clockwise()
                 self.rotate_clockwise()
 
-        if original_state != self.grid:
+        if changed == True:
             self.add_random_tile()
             return True
         else:

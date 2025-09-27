@@ -60,6 +60,7 @@ def main():
             game_board.new_game()
             game_board.add_random_tile()
             game_board.add_random_tile()
+            game_board.display()
         elif choice == "8":
             print("Exiting game....")
             break
