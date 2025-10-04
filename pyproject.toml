@@ -23,4 +23,5 @@ coverage = "^7.10.7"
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.3.8"
 pytest = "^8.4.2"
+coverage = "^7.10.7"
 

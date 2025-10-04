@@ -23,7 +23,7 @@ class TestSolitaire(unittest.TestCase):
         self.assertEqual(self.game.score, 360)
     
     def test_rotate_clockwise(self):
-        self.game.new_game() 
+        self.game.new_game()
         # Board state before the rotation
         self.game.grid = [
             [1, 2, 3, 4],
@@ -174,7 +174,7 @@ class TestSolitaire(unittest.TestCase):
         original = self.game.grid
         initial_score = self.game.score
         
-        changed = self.game.move_tiles("LEFT")
+        changed = self.game.move_tiles("RIGHT")
         
         self.assertFalse(changed)
         self.assertEqual(self.game.grid, original)
@@ -249,3 +249,47 @@ class TestSolitaire(unittest.TestCase):
         # When no valid moves change the board state, max_value remains at -math.inf
         self.assertEqual(value, -math.inf)
         self.assertIsNone(best_move)
+
+    def test_move_tiles_invalid_direction(self):
+        #Tests that the user cannnot put an invalid direction as an input
+        self.game.new_game() 
+        self.game.grid = [
+            [2, 4, 8, 16],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ]
+        original_grid = [row[:] for row in self.game.grid]
+        initial_score = self.game.score
+        
+        changed = self.game.move_tiles("INVALID")
+        
+        self.assertFalse(changed)
+        self.assertEqual(self.game.grid, original_grid)
+        self.assertEqual(self.game.score, initial_score)
+
+    def test_new_game_resets_state(self):
+        #Tests that new game is working properly
+        self.game.score = 100
+        self.game.grid = [
+            [2, 4, 8, 16],
+            [32, 64, 128, 256],
+            [2, 4, 8, 16],
+            [32, 64, 128, 256]
+        ]
+        
+        self.game.new_game()
+        self.assertEqual(self.game.score, 0)
+        self.assertTrue(all(cell == 0 for row in self.game.grid for cell in row))
+
+    def test_get_empty_and_add_tile(self):
+        # Tests the functions of get_empty and add_tile
+        self.game.new_game()
+        empty_before = self.game.get_empty()
+        self.assertEqual(len(empty_before), 16)
+
+        position = (0, 0)
+        self.game.add_tile(position, 2)
+        empty_after = self.game.get_empty()
+        self.assertEqual(len(empty_after), 15)
+        self.assertEqual(self.game.grid[0][0], 2)

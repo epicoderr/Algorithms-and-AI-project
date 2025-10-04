@@ -78,12 +78,12 @@ class Board:
                 self.rotate_clockwise()
                 self.rotate_clockwise()
 
-            elif direction == "UP":
+            elif direction == "DOWN":
                 self.rotate_clockwise()
                 self.rotate_clockwise()
                 self.rotate_clockwise()
 
-            elif direction == "DOWN":
+            elif direction == "UP":
                 self.rotate_clockwise()
 
             # We first get all non zero values and then add zeros to the left to shift the row
@@ -111,10 +111,10 @@ class Board:
                 self.rotate_clockwise()
                 self.rotate_clockwise()
 
-            elif direction == "UP":
+            elif direction == "DOWN":
                 self.rotate_clockwise()
 
-            elif direction == "DOWN":
+            elif direction == "UP":
                 self.rotate_clockwise()
                 self.rotate_clockwise()
                 self.rotate_clockwise()

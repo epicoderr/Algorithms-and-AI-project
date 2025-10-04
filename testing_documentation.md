@@ -4,15 +4,14 @@ Unit testing coverage report:
 Name                       Stmts   Miss Branch BrPart  Cover
 ------------------------------------------------------------
 src\ai\__init__.py             0      0      0      0   100%
-src\ai\expectiminimax.py      35     20     14      2    43%
-src\ai\heuristic.py           26      2     16      2    90%
+src\ai\expectiminimax.py      34     20     14      2    42%
+src\ai\heuristic.py           25      2     16      2    90%
 src\game\__init__.py           0      0      0      0   100%
-src\game\board.py             88     12     42      3    84%
-src\tests\2048_test.py       111      3      4      0    97%
+src\game\board.py             88     12     42      2    85%
+src\tests\2048_test.py       135      0      4      0   100%
 src\tests\__init__.py          0      0      0      0   100%
 ------------------------------------------------------------
-TOTAL                        260     37     76      7    83%
-
+TOTAL                        282     34     76      6    85%
 
 What was tested and how:
 - Tested initial board by counting all the non-zero tiles on the board and then looks at if its exactly 2
@@ -32,3 +31,9 @@ What was tested and how:
 - Tested if expectiminimax is applying the heuristic correctly by having a simple case where they are the same
 
 - Tested if expectiminimax is able to recognize that there are no more valid moves by checking that the value is -infinity
+
+- Tested if an invalid direction can be done by giving an invalin input and checking what happened
+
+- Tested that new_game functions properly by setting a score and grid and then seeing if they get reset
+
+- Tested that get_empty and add_tile function properly
