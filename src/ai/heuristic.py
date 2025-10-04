@@ -1,23 +1,22 @@
-from game.board import Board
 import math
 
 #Weight matrix corresponding to the board: so basically where do we want the large value tiles
-#A snake pattern such as this works decently well, there may be better patterns but I can adjust in future weeks
+#A snake pattern such as this works quite well, I will continue testing
 WEIGHT_MATRIX = [
-    [16, 8, 4, 2],
-    [8, 4, 2, 1],
-    [4, 2, 1, 0],
-    [2, 1, 0, 0]
+    [15, 14, 13, 12],
+    [8, 9, 10, 11],
+    [7, 6, 5, 4],
+    [0, 1, 2, 3],
 ]
 
 # Heuristic weights for combining the features, may be adjusted
-W_W_SCORE = 0.5   
-W_SMOOTH = 1.0     
-W_EMPTY = 10.0     
+W_W_SCORE = 0.5
+W_SMOOTH = 1.0
+W_EMPTY = 10.0
 
 def heuristic(board):
-    grid = board.grid  
-    
+    grid = board.grid
+
     # Positional Weighted Score: using the weight matrix to give a score to our position
     weighted_score = 0
     for row in range(4):
@@ -39,7 +38,7 @@ def heuristic(board):
                 # Check bottom neighbor
                 if row < 3 and grid[row+1][cell] > 0:
                     smoothness -= abs(log_val - math.log2(grid[row+1][cell]))
-                    
+
     # Empty Cells: so how free is the player to move
     empty_cells = len(board.get_empty())
 

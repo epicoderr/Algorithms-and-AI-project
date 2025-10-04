@@ -1,6 +1,6 @@
+import time
 from game.board import Board
 from ai.expectiminimax import expectiminimax
-import time
 
 def main():
     # Initializes the game, so creates 16 empty cells then generates 2 randomly
@@ -8,7 +8,7 @@ def main():
     game_board.add_random_tile()
     game_board.add_random_tile()
 
-    MAX_DEPTH = 3  
+    max_depth = 3
 
     print("Welcome to 2048!")
     game_board.display()
@@ -27,7 +27,8 @@ def main():
 
         choice = input("Enter your choice: ").strip()
 
-        # The directions just display the board after the choice, and the AI ones have a little text explaining what move was chosen
+        # The directions just display the board after the choice
+        # The AI ones have a little text explaining what move was chosen
         if choice == "1":
             game_board.move_tiles("LEFT")
             game_board.display()
@@ -41,7 +42,7 @@ def main():
             game_board.move_tiles("DOWN")
             game_board.display()
         elif choice == "5":
-            value, best_move = expectiminimax(game_board, MAX_DEPTH, True)
+            value, best_move = expectiminimax(game_board, max_depth, True)
             print(f"AI chose move: {best_move} (Evaluation: {value:.2f})")
             if best_move:
                 game_board.move_tiles(best_move)
@@ -49,7 +50,7 @@ def main():
         elif choice == "6":
             print("AI will play this out")
             while game_board.has_valid_moves():
-                value, best_move = expectiminimax(game_board, MAX_DEPTH, True)
+                value, best_move = expectiminimax(game_board, max_depth, True)
                 if best_move:
                     game_board.move_tiles(best_move)
                 game_board.display()

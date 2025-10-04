@@ -14,11 +14,11 @@ class Board:
     def get_empty(self):
         # Gets empty cells
         return [(r, c) for r in range(self.size) for c in range(self.size) if self.grid[r][c] == 0]
-    
+
     def update_score(self, cell_value):
-        #A simple way to update the score when tiles are merged, may change this up if it seems more convenient to do another way
+        #A simple way to update the score when tiles are merged
         self.score += cell_value
-    
+
     def add_tile(self, position, value):
         # Adds a value to a tile
         row, column = position
@@ -33,19 +33,19 @@ class Board:
         value = 4 if random.random() < 0.1 else 2
         self.add_tile(position, value)
         return True
-    
+
     def has_valid_moves(self):
         #Useful for seeing if there are valid moves
         if self.get_empty():
             return True
-        
+
         for r in range(self.size):
             for c in range(self.size):
                 if c < self.size - 1 and self.grid[r][c] == self.grid[r][c+1]:
                     return True
                 if r < self.size - 1 and self.grid[r][c] == self.grid[r+1][c]:
                     return True
-        
+
         return False
 
     def display(self):
@@ -61,27 +61,28 @@ class Board:
             print()
             print("-" * (6 * self.size + 1))
         print(f"Current Score: {self.score}")
-    
+
     def rotate_clockwise(self):
         transposed_grid = list(zip(*self.grid))
-    
+
         rotated_grid = [list(row)[::-1] for row in transposed_grid]
-    
+
         self.grid = rotated_grid
-    
+
     def move_tiles(self, direction):
         changed = False
-        # This is handled for the direction being right by default, and then for the other directions I just rotate to make it work
+        # This is handled for the direction being right by default
+        # Then for the other directions I just rotate to make it work
         if direction in ["RIGHT", "LEFT", "UP", "DOWN"]:
             if direction == "LEFT":
                 self.rotate_clockwise()
                 self.rotate_clockwise()
-        
+
             elif direction == "UP":
                 self.rotate_clockwise()
                 self.rotate_clockwise()
                 self.rotate_clockwise()
-            
+
             elif direction == "DOWN":
                 self.rotate_clockwise()
 
@@ -102,26 +103,23 @@ class Board:
 
                 if final_row != self.grid[i]:
                     changed = True
-            
+
                 self.grid[i] = final_row
 
             # We change it back to how it was
             if direction == "LEFT":
                 self.rotate_clockwise()
                 self.rotate_clockwise()
-        
+
             elif direction == "UP":
                 self.rotate_clockwise()
-            
+
             elif direction == "DOWN":
                 self.rotate_clockwise()
                 self.rotate_clockwise()
                 self.rotate_clockwise()
 
-        if changed == True:
+        if changed:
             self.add_random_tile()
             return True
-        else:
-            return False
-    
-    
+        return False
