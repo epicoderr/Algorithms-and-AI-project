@@ -7,6 +7,6 @@
 
 -  Navigate to src and use **poetry run python main.py** to run and see the functionality
 
--  To run tests use **poetry run pytest src**
+-  To run tests use **poetry run coverage run --branch -m pytest src**
 
 -  To get the coverage report use **poetry run coverage report**

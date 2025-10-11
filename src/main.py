@@ -8,7 +8,7 @@ def main():
     game_board.add_random_tile()
     game_board.add_random_tile()
 
-    max_depth = 3
+    max_depth = 4 #This can be changed as you like
 
     print("Welcome to 2048!")
     game_board.display()

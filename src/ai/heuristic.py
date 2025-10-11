@@ -3,10 +3,10 @@ import math
 #Weight matrix corresponding to the board: so basically where do we want the large value tiles
 #A snake pattern such as this works quite well, I will continue testing
 WEIGHT_MATRIX = [
-    [15, 14, 13, 12],
-    [8, 9, 10, 11],
-    [7, 6, 5, 4],
-    [0, 1, 2, 3],
+    [65536, 32768, 16384, 8192],
+    [512,   1024,  2048,  4096],
+    [256,   128,   64,    32],
+    [1,     2,     4,     8],
 ]
 
 # Heuristic weights for combining the features, may be adjusted

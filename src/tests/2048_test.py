@@ -231,8 +231,8 @@ class TestSolitaire(unittest.TestCase):
         self.assertEqual(value, expected_value)
         self.assertIsNone(best_move)
 
-    def test_expectiminimax_no_valid_moves(self):
-        #Tests if expectiminimax is able to recognize a board with no moves
+    def test_expectiminimax_no_valid_moves_max_player(self):
+        #Tests if expectiminimax is able to recognize a board with no moves as MAX player
         self.game.new_game() 
         self.game.grid = [
             [2, 4, 8, 16],
@@ -248,6 +248,77 @@ class TestSolitaire(unittest.TestCase):
         
         # When no valid moves change the board state, max_value remains at -math.inf
         self.assertEqual(value, -math.inf)
+        self.assertIsNone(best_move)
+
+    def test_expectiminimax_no_valid_moves_chance_player(self):
+        #Tests if expectiminimax is able to recognize a board with no moves as CHANCE
+        self.game.new_game() 
+        self.game.grid = [
+            [2, 4, 8, 16],
+            [32, 64, 128, 256],
+            [2, 4, 8, 16],
+            [32, 64, 128, 256]
+        ]
+        
+        depth = 1 
+        is_max_player = False
+        
+        expected_heuristic_value = heuristic(self.game)
+        value, best_move = expectiminimax(self.game, depth, is_max_player)
+        
+        # When no valid moves change the board state, max_value remains at -math.inf
+        self.assertEqual(value, expected_heuristic_value)
+        self.assertIsNone(best_move)
+
+    def test_expectiminimax_max_player_move(self):
+        #Tests that max player is able to identify a correct move
+        self.game.new_game()
+        self.game.grid = [
+            [2, 0, 0, 2],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ]
+
+        depth = 1 
+        value, best_move = expectiminimax(self.game, depth, True)
+        
+        # Only left and right can be correct moves here since they result in a merge and point increase
+        self.assertIn(best_move, ["LEFT", "RIGHT"])
+        self.assertTrue(value > -math.inf)
+    
+    def test_expectiminimax_chance_player_calculation(self):
+        # Simulates a calculation the chance player makes
+        # We set up a board where the game can either continue or end depending on whether it randomly adds a 2 or 4
+        # It is then possible to calculate and verify whether the chance player is doing it correctly
+        self.game.new_game()
+        self.game.grid = [
+            [2, 0, 8, 16],
+            [32, 64, 128, 256],
+            [512, 1024, 8, 16],
+            [32, 64, 128, 256]
+        ]
+        
+        depth = 1
+        is_max_player = False
+        
+        board_2 = Board()
+        board_2.grid = [row[:] for row in self.game.grid]
+        board_2.grid[0][1] = 2
+        value_2 = heuristic(board_2)
+
+        board_4 = Board()
+        board_4.grid = [row[:] for row in self.game.grid]
+        board_4.grid[0][1] = 4
+        value_4 = heuristic(board_4)
+
+        prob_2 = 0.9
+        prob_4 = 0.1
+        expected_value = (prob_2 * value_2 + prob_4 * value_4) / 1
+        
+        value, best_move = expectiminimax(self.game, depth, is_max_player)
+        
+        self.assertAlmostEqual(value, expected_value)
         self.assertIsNone(best_move)
 
     def test_move_tiles_invalid_direction(self):
