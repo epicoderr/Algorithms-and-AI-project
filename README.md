@@ -1,12 +1,7 @@
-## How to use
-- Navigate to project environment
-
-- Use **poetry shell** or **poetry env activate** to activate the virtual environment
-
-- Use **poetry install** to install poetry if you do not have it
-
--  Navigate to src and use **poetry run python main.py** to run and see the functionality
-
--  To run tests use **poetry run coverage run --branch -m pytest src**
-
--  To get the coverage report use **poetry run coverage report**
+**Weekly Reports**
+[Weekly Report 1](weekly_report_1.md)
+[Weekly Report 2](weekly_report_2.md)
+[Weekly Report 3](weekly_report_3.md)
+[Weekly Report 4](weekly_report_4.md)
+[Weekly Report 5](weekly_report_5.md)
+[Weekly Report 6](weekly_report_6.md)
