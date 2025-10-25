@@ -1,7 +1,7 @@
 import math
 
 #Weight matrix corresponding to the board: so basically where do we want the large value tiles
-#A snake pattern such as this works quite well, I will continue testing
+#A snake pattern such as this was the most effective matrix I found
 WEIGHT_MATRIX = [
     [65536, 32768, 16384, 8192],
     [512,   1024,  2048,  4096],

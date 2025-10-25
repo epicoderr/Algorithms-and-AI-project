@@ -7,7 +7,7 @@ class Board:
         self.score = 0
 
     def new_game(self, size=4):
-        # Will probably be useful for when a player wants a new game
+        # Helper function that starts a new game
         self.grid = [[0]*size for _ in range(size)]
         self.score = 0
 
@@ -35,7 +35,7 @@ class Board:
         return True
 
     def has_valid_moves(self):
-        #Useful for seeing if there are valid moves
+        #Attempts to see if there are valid moves
         if self.get_empty():
             return True
 
@@ -87,6 +87,7 @@ class Board:
                 self.rotate_clockwise()
 
             # We first get all non zero values and then add zeros to the left to shift the row
+            # This shifting method was thought up with the help of Gemini
             for i in range(self.size):
                 row = self.grid[i]
                 new_row = [cell for cell in row if cell != 0]
