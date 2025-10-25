@@ -5,7 +5,7 @@
 
 - heuristic.py contains the heuristic evaluation function that is the base for the expectiminimax search. This heuristic uses three variables: the amount of empty cells, a positional weighted score using a weight matrix and smoothness, which prioritizes tiles that are close in value.
 
-- main.py has a text based display where the user can play the game themselves as well as let the AI agent play it. The maximum depth can be changed in order to observe varying results.
+- main.py has a text based display where the user can play the game themselves as well as let the AI agent play it. The maximum depth can be changed in order to observe varying results. It uses the game logic from board.py in order to simulate gameplay, while the ai agent does its moves using the expectiminimax and heuristic.
 
 **Possible shortcomings and suggestions for improvement**:
 - The heuristic could certainly still be improved, as while it is pretty effective right now, I did not perform rigorous testing or anything to make sure it was perfect. One idea could be adding monoticity as a variable, which would reward rows with increasing numbers in one direction.

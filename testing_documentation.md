@@ -1,5 +1,3 @@
-The testing document must include the following:
-
 Unit testing coverage report:
 Name                       Stmts   Miss Branch BrPart  Cover
 ------------------------------------------------------------
@@ -18,11 +16,11 @@ What was tested and how:
 
 - Tested updating a score by setting a score then updating it and seeing if it lines up
 
-- Tested clockwise rotation by first checking a single rotation and then four rotations
+- Tested clockwise rotation by first checking a single rotation and then four rotations, checking that the direction lines up each time
 
 - Tested the recognition of having valid moves by having a new board with clear valid moves and a full board with none
 
-- Tested merging tiles with a base case, a base case with a rotation and a case where the order of merging was tested. It is important to note that currently up and down seem to be mixed up due to a bug, so that one failed.
+- Tested merging tiles with a base case, a base case with a rotation and a case where the order of merging was tested. It is important to note that currently up and down seem to be mixed up due to a bug, so that one failed
 
 - Tested moving tiles with no merge but still a change by setting up a starting board where that was possible
 
@@ -32,7 +30,7 @@ What was tested and how:
  
 - Tested if the heuristic is able to calculate the correct weighted score by giving it a test case, calculating it and then comparing it to what the heuristic says
 
-- Tested if expectiminimax is applying the heuristic correctly by having a simple case where they are the same
+- Tested if expectiminimax is applying the heuristic correctly by having a simple case where they are the same, and checking if that is the case
 
 - Tested if expectiminimax is able to recognize that there are no more valid moves as MAX player by checking that the value is -infinity
 
@@ -44,4 +42,4 @@ What was tested and how:
 
 - Tested that new_game functions properly by setting a score and grid and then seeing if they get reset
 
-- Tested that get_empty and add_tile function properly
+- Tested that get_empty and add_tile function properly by setting up and empty board and adding a tile then seeing whether it appeared respectively
