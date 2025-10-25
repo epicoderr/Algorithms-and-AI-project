@@ -8,6 +8,6 @@
 
 **Other Useful Documents**
 - [User Guide](user_guide.md)
-- [Specification Document](Specification document.md)
+- [Specification Document](Specification_document.md)
 - [Implementation Report](implementation_report.md)
 - [Testing Documentation](testing_documentation.md)
