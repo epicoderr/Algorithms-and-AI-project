@@ -97,12 +97,42 @@ class TestSolitaire(unittest.TestCase):
         original = self.game.add_random_tile
         self.game.add_random_tile = lambda: True 
 
-        self.game.move_tiles("RIGHT")
+        changed = self.game.move_tiles("RIGHT")
+
+        self.game.add_random_tile = original
+
+        self.assertTrue(changed)
+        self.assertEqual(self.game.grid, expected_grid)
+        self.assertEqual(self.game.score, initial_score + 12)
+
+    def test_move_tiles_no_merge(self):
+        #Tests that merges work as expected
+        self.game.new_game() 
+        self.game.grid = [
+            [2, 0, 0, 0],
+            [2, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ]
+        expected_grid = [
+            [0, 0, 0, 2],
+            [0, 0, 0, 2],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ]
+        initial_score = self.game.score
+
+        #We replace the function and then add it back because otherwise the grids cannot be reloably compared
+        original = self.game.add_random_tile
+        self.game.add_random_tile = lambda: True 
+
+        changed = self.game.move_tiles("RIGHT")
 
         self.game.add_random_tile = original
        
+        self.assertTrue(changed)
         self.assertEqual(self.game.grid, expected_grid)
-        self.assertEqual(self.game.score, initial_score + 12)
+        self.assertEqual(self.game.score, 0)
 
     def test_move_tiles_triple_merge(self):
         #Tests that merges work as expected if theres a scenario like this where we need to merge the two rightmost ones
@@ -192,6 +222,20 @@ class TestSolitaire(unittest.TestCase):
         ]
         
         self.assertFalse(self.game.has_valid_moves())
+
+    def test_add_random_tile_full(self):
+        #Tests that tiles cannot be added to a full board
+        self.game.new_game() 
+
+        self.game.grid = [
+            [2, 4, 8, 16],
+            [32, 64, 128, 256],
+            [2, 4, 8, 16],
+            [32, 64, 128, 256]
+        ]
+        
+        self.assertFalse(self.game.add_random_tile())
+
 
     def test_heuristic_weighted_score(self):
         #Tests whether the score is calcluated accurately

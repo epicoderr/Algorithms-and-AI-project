@@ -7,11 +7,11 @@ src\ai\__init__.py             0      0      0      0   100%
 src\ai\expectiminimax.py      34      0     14      0   100%
 src\ai\heuristic.py           25      0     16      0   100%
 src\game\__init__.py           0      0      0      0   100%
-src\game\board.py             88     12     42      2    85%
-src\tests\2048_test.py       170      0      4      0   100%
+src\game\board.py             88     11     42      1    86%
+src\tests\2048_test.py       187      0      4      0   100%
 src\tests\__init__.py          0      0      0      0   100%
 ------------------------------------------------------------
-TOTAL                        317     12     76      2    95%
+TOTAL                        334     11     76      1    96%
 
 What was tested and how:
 - Tested initial board by counting all the non-zero tiles on the board and then looks at if its exactly 2
@@ -24,7 +24,11 @@ What was tested and how:
 
 - Tested merging tiles with a base case, a base case with a rotation and a case where the order of merging was tested. It is important to note that currently up and down seem to be mixed up due to a bug, so that one failed.
 
+- Tested moving tiles with no merge but still a change by setting up a starting board where that was possible
+
 - Tested a case where a move should be invalid due to no changes occuring by having a board where moving left changed nothing and thus no new random tiles should be created
+
+- Tested that tiles cannot be added to a full board by setting up a full board, attempting to add a tile and confirming whether changes occured
  
 - Tested if the heuristic is able to calculate the correct weighted score by giving it a test case, calculating it and then comparing it to what the heuristic says
 

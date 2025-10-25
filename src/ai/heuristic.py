@@ -6,7 +6,7 @@ WEIGHT_MATRIX = [
     [65536, 32768, 16384, 8192],
     [512,   1024,  2048,  4096],
     [256,   128,   64,    32],
-    [1,     2,     4,     8],
+    [2,     4,     8,     16],
 ]
 
 # Heuristic weights for combining the features, may be adjusted
